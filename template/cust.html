@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block section %}
+
+<div >
+<ul class="disp">
+    <div class="dash1">
+        <br>
+ {% if user.is_superuser %}
+ <h1 style="text-align:center;background-color:red;">Admin Dashboard</h1>
+ 
+    <li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'aviewprofile' %}" class="dash">VIEW PROFILE</a >
+        </div>
+    </li>
+   
+    <li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'aupdateprofile' %}" class="dash">UPDATE PROFILE</a >
+         </div>
+    </li>
+
+<li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'adminadddoctor' %}" class="dash">ADD DOCTOR</a>
+         </div>
+    </li>
+
+
+<li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'adminaddpatient' %}" class="dash">ADD PATIENT</a>
+         </div>
+    </li>
+
+<li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'aviewdoctor' %}" class="dash">VIEW DOCTOR</a>
+         </div>
+    </li>
+
+<li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'aviewpatient' %}" class="dash">VIEW PATIENT</a>
+         </div>
+    </li>
+
+
+
+    <li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'adminviewappointment' %}" class="dash">APPOINTMENT VIEW</a >
+         </div>
+    </li>   
+  <!--  <li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'addpatient' %}" class="dash">ADD PATIENT</a>
+         </div>
+    </li>
+    -->
+    <li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'screening' %}" class="dash">SCREENING</a>
+         </div>
+    </li>
+   
+     <li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'asendemail' %}" class="dash">SEND EMAIL</a>
+         </div>
+    </li>
+    <li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'changepass' %}" class="dash">CHANGE PASSWORD</a>
+         </div>
+    </li>
+    <li><div style="background-color:pink;padding:14px;text-align:center;">
+        <a href="{% url 'logouts' %}" class="dash">LOGOUT</a>
+         </div>
+    </li>
+
+        {% elif user.is_staff %}
+        <h1 style="text-align:center;background-color:gray;">Doctor Dashboard</h1>
+    <li><div style="background-color:purple;padding:14px;text-align:center;">
+        <a href="{% url 'dviewprofile' %}" class="dash">VIEW PROFILE</a >
+    </li>
+   
+    <li><div style="background-color:purple;padding:14px;text-align:center;">
+        <a href="{% url 'dupdateprofile' %}" class="dash">UPDATE PROFILE</a >
+         </div>
+    </li>
+    <li><div style="background-color:purple;padding:14px;text-align:center;">
+        <a href="{% url 'appointmentsent' %}" class="dash">APPOINTMENT VIEW</a >
+         </div>
+    </li>   
+    <li><div style="background-color:purple;padding:14px;text-align:center;">
+        <a href="{% url 'addpatient' %}" class="dash">ADD PATIENT</a>
+         </div>
+    </li>
+    <li><div style="background-color:purple;padding:14px;text-align:center;">
+        <a href="{% url 'screening' %}" class="dash">SCREENING</a>
+         </div>
+    </li>
+   
+   <li><div style="background-color:purple;padding:14px;text-align:center;">
+        <a href="{% url 'prescription' %}" class="dash">add prescription</a>
+         </div>
+    </li>
+
+     <li><div style="background-color:purple;padding:14px;text-align:center;">
+        <a href="{% url 'dsendemail' %}" class="dash">SEND EMAIL</a>
+         </div>
+    </li>
+    <li><div style="background-color:purple;padding:14px;text-align:center;">
+        <a href="{% url 'changepass' %}" class="dash">CHANGE PASSWORD</a>
+         </div>
+    </li>
+    <li><div style="background-color:purple;padding:14px;text-align:center;">
+        <a href="{% url 'logouts' %}" class="dash">LOGOUT</a>
+        </div>
+    </li>
+    {% elif user.is_active  %}
+  
+ <h1 style="text-align:center;background-color:Green;">Patient Dashboard</h1>
+    <li><div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'pviewprofile' %}" class="dash">VIEW PROFILE</a >
+         </div>
+    </li>
+  
+    <li><div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'pupdateprofile' %}" class="dash">UPDATE PROFILE</a >
+         </div>
+    </li>
+
+ 
+
+       <li><div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'viewdoctor' %}" class="dash">VIEW DOCTOR</a>
+         </div>
+    </li>
+    <li><div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'appointment' %}" class="dash">APPOINTMENT</a>
+         </div>
+    </li>
+
+    <li><div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'patientviewappointment' %}" class="dash">APPOINTMENT DETAILS</a>
+         </div>
+    </li>
+
+    <li><div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'patient_view_screening' %}" class="dash">View Screening</a>
+         </div>
+    </li>
+<li><div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'viewprescription' %}" class="dash">View prescription</a>
+         </div>
+    </li>
+
+    <li><div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'psendemail' %}" class="dash">SEND EMAIL</a>
+         </div>
+    </li>
+    <li><div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'changepass' %}" class="dash">CHANGE PASSWORD</a>
+         </div>
+    </li>
+    <li><div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'logouts' %}" class="dash">LOGOUT</a>
+        </div>
+    </li>
+
+    
+    {% endif %}
+    <br><br>
+ 
+    <br>
+</div>
+</ul>
+</div>
+{% endblock %}

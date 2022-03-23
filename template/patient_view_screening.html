@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block section %}
+{% if msz %}
+<h2>{{msg}}</h2>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h1 style="background-color:pink;padding:14px;text-align:center;">Screening</h1><br>
+    <label> Click the button to view an Screening details</label><br>
+   
+ 
+  <select name="sname" class="form-control" >
+            
+            <option  value="{{user.first_name}} {{user.last_name}}">{{user.first_name}} {{user.last_name}}</option>
+           
+            </select>
+            
+ 
+    <input type="submit" class="btn btn-success"  value="view Screening" class="in">
+    
+</form><br><br>
+
+<table class="table table-hover">
+    <tr>
+        <th>Patient Name</th>
+        
+        <th>Symptoms</th>
+        <th>Complains</th>
+        <th>BP </th>
+        <th>Temperature </th>
+        <th>Weight </th>
+        <th>Fever </th>
+        <th>Pain condition </th>
+        <th>Physical Appearence </th>
+        <th>Deformation </th>
+        <th>appetite </th>
+        <th>Sleeep Conditions </th>
+
+    </tr>
+    {% for i in obj %}
+    <tr>
+        <td>{{i.patient_name}}</td>
+        
+        <td>{{i.symptoms}}</td>
+        <td>{{i.complains}}</td>
+        <td>{{i.bp}}</td>
+        <td>{{i.temperature}}</td>
+        <td>{{i.weight}}</td>
+        <td>{{i.fever}}</td>
+        <td>{{i.pain_condition}}</td>
+        <td>{{i.physical_appearence}}</td>
+        <td>{{i.Deformation}}</td>
+        <td>{{i.appetite}}</td>
+        <td>{{i.sleep_condition}}</td>
+        
+
+    </tr>
+    {% endfor %}
+   
+</table>
+<br>
+
+{% endblock %}

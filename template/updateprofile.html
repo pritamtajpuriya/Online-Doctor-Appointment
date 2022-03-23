@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% block section %}
+{% if msg %}
+<h2>{{msg}}</h2>
+{% endif %}
+{% if data %}
+<style type="text/css">
+    body {
+      color: #aa082e;
+      background-color: #b6bde7;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 30%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+    </style>
+<form action="" method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+
+ <div class="container register-form">
+      <div class="form">
+        <div class="note">
+          <p>Update profile</p>
+        </div>
+
+        <div class="form-content">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+              
+                <input type="text" class="form-control" name="fname" id="first" value="{{user.first_name}}" placeholder="firstname"><br>
+              </div>
+              <div class="form-group">
+              
+                <input type="text" class="form-control" name="lname" id="last"value="{{user.last_name}}" placeholder="Lastname"><br>
+              </div>
+              <div class="form-group">
+              
+                <input type="text" class="form-control" name="uname" id="uname" value="{{user.username}}" placeholder="Username"><br>
+              </div>
+             
+              <div class="form-group">
+              
+                <input type="email" class="form-control" name="email" id="email"value="{{user.email}}" placeholder="Email Address"><br>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" name="contact" id="contact"value="{{data.contact_number}}" placeholder="Contact number"><br>
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              
+              <div class="form-group">
+              
+                <input type="number" class="form-control" name="age" id="age"value="{{data.age}}" placeholder="Age"><br>
+              </div>
+              <div class="form-group">
+              <label> Gender</label><br>
+                <select name="gender">
+{% if data.gender == "male" %}
+<option value="male" selected>{{data.gender}}</option>
+<option value="female">female</option>
+<option value="other">Other</option>
+{% elif data.gender == "female" %}
+<option value="female" selected>{{data.gender}}</option>
+<option value="male">male</option>
+<option value="other">Other</option>
+{% else %}
+<option value="other" selected>{{data.gender}}</option>
+<option value="female">female</option>
+<option value="male">male</option>
+{% endif %}
+</select><br>
+</div>
+             
+                 <div class="form-group">
+                <label>Occupation</label><br>
+                <textarea name="occupation" id="" cols="30" rows="10" placeholder="Enter occupation"> {{data.occupation}}
+                </textarea><br><br>
+              </div>
+
+                     
+          
+
+                 
+
+              <div class="form-group">
+              <label >Upload profile</label><br>
+              <img src="/media/{{data.profile}}" alt="no image" style="height: 150px; width: 200px;"><br>
+             <input type="file" name="image" ><br>
+            </div>
+          </div>
+          <button type="submit" value="Update" class="btnSubmit">update</button>
+          
+        </div>
+      </div>
+    </div>
+
+{% endif %}
+
+{% endblock %}

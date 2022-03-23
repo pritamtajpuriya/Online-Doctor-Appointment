@@ -1,0 +1,150 @@
+{% extends 'cust.html' %}
+{% block section %}
+{% if msz %}
+<h2>{{msz}}</h2>
+{% endif %}
+
+<style type="text/css">
+    body {
+      color: #aa082e;
+      background-color: #b6bde7;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 30%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+  </style>
+<!--
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    <label>Doctor Name</label><br>
+    <input type="text" name="doctor"  placeholder="Doctor Name"><br>
+    <label>Full name</label><br>
+    <input type="text" name="fname"  placeholder="Full name"><br>
+    <label>Contact number</label><br>
+    <input type="number" name="cnumber"  placeholder="Contact number"><br>
+    <label>Patient Problem</label><br>
+    <Textarea placeholder="Problems" name="message"></Textarea>    <br><br>
+    <label>Appointment Time</label><br>
+    <input type="text" name="appointment"  placeholder="Appointment time"><br><br>
+<input type="submit" value="Submit" class="in">
+
+
+</form>
+-->
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    <div class="container register-form">
+      <div class="form">
+        <div class="note">
+          <p>Appointment form</p>
+        </div>
+
+        <div class="form-content">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                 <label for="doctor">Doctor Name:</label>
+            <input type="text" name="doctor"  class="form-control" placeholder="Doctor name" required>
+             
+              </div>
+
+           
+              <div class="form-group">
+              <label> patient name</label><br>
+            <input type="text" name="fname" value="{{user.first_name}} {{user.last_name}}" class="form-control" placeholder="Full name" required>
+              </div>
+
+
+
+
+<div class="form-group">
+             <label>Contact number</label><br>
+    <input type="number" name="contact" value="{{data.contact_number}}" class="form-control"   placeholder="Contact number" required >
+              </div>
+<div class="form-group">
+             <label>Email</label><br>
+    <input type="email" name="email" value="{{user.email}}" class="form-control"   placeholder="Email" required >
+              </div>
+<div class="form-group">
+               <label>Patient Problem</label><br>
+    <Textarea placeholder="Problems" class="form-control"  name="message" required></Textarea>    
+              </div>
+
+
+              <div class="form-group">
+             <label>Appointment Time</label><br>
+            <input type="time" name="appointment" class="form-control" placeholder="Appointment time" required>
+              </div>
+
+<div class="form-group">
+             <label>Appointment date</label><br>
+            <input type="date" name="appointmentd" class="form-control" id="txtDate" placeholder="Appointment date"  required>
+              </div>
+
+            </div>
+          </div>
+          <button type="submit"value="submit" onclick='return confirm("do you want to sent appointment ")'  class="btnSubmit">Submit</button>
+          
+        </div>
+      </div>
+    </div>
+
+  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+      
+$(function(){
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var minDate= year + '-' + month + '-' + day;
+    
+    $('#txtDate').attr('min', minDate);
+});
+
+
+
+    </script>
+
+
+{% endblock %}

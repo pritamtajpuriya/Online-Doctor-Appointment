@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block section %}
+{% if msz %}
+<h2>{{msg}}</h2>
+{% endif %}
+
+    <h1 style="background-color:pink;padding:14px;text-align:center;">APPOINTMENTS DETAILS</h1><br>
+  
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <label> Click the button to view an appointment</label><br>
+  
+ 
+  <select name="fname" class="form-control" >
+            
+            <option  value="{{user.first_name}} {{user.last_name}}">{{user.first_name}} {{user.last_name}}</option>
+           
+            </select>
+            
+ 
+    <input type="submit" class="btn btn-success" value="view appointment" class="in">
+    
+</form><br><br>
+
+
+<table class="table table-hover">
+    <tr>
+        <th scope="col">Doctor Name</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">Patient phonenumber</th>
+        <th scope="col">Patient Problem</th>
+        <th scope="col">Appointment Time </th>
+        <th scope="col">Appointment Date </th>
+        <th scope="col">Action </th>
+
+    </tr>
+    {% for i in obj %}
+    <tr>
+    <td>{{i.doctor}}
+        <td scope="col">{{i.full_name}}</td>
+        <td scope="col">{{i.phone_number}}</td>
+        <td scope="col">{{i.message}}</td>
+        <td scope="col">{{i.appointment_time}}</td>
+        <td scope="col">{{i.appointment_date}}</td>
+        <td scope="col"><a href="{% url 'patient_delete_appointment' i.id %}" onclick='return confirm("do you want to cancel")'  class="btn btn-danger">Cancel Appointment</a></td>
+
+    </tr>
+    {% endfor %}
+   
+</table>
+<br>
+ <div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'dsendemail' %}" class="dash">SEND EMAIL TO DOCTOR</a>
+         </div>
+<a class="btn btn-primary" href="{% url 'patient_view_screening' %}"  role="button">view screening</a>  
+<a class="btn btn-primary btn-lg float-right" href="{% url 'viewprescription' %}" text-align="center" role="button">view prescription</a>     <br><br>    
+{% endblock %}

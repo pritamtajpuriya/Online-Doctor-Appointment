@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block section %}
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+
+{% if msg %}
+<h2>{{msg}}</h2>
+{% endif %}
+
+
+
+
+<body>
+
+<h2 style="text-align:center">User Profile Card</h2>
+
+
+
+<div class="card">
+  <img src="/media/{{data.profile}}" alt="no image" style="height: 260px; width: 520px;">
+
+  <h1 class="title"><b>Detail information</b></h1>
+  <hr>
+ 
+ 
+   <h3>Firstname:<b>{{user.first_name}}</b></h3>
+   <h3>Lastname:<b>{{user.last_name}}</b></h3>
+   <h3>Username:<b>{{user.username}}</b></h3>
+  <h3>Email:<b> {{user.email}}</b></h3>
+   <h3>Contact:<b>{{data.contact_number}}</b></h3>
+   <h3>Age:<b>{{data.age}}</b></h3>
+   <h3>Gender:<b>{{data.gender}}</b></h3>
+   <h3>Occupation:<b>{{data.occupation}}</b></h3>
+   
+  
+  
+  <p><button> View Profile</button></p>
+</div>
+
+
+</body>
+{% endblock %}

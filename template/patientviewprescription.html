@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block section %}
+{% if msz %}
+<h2>{{msg}}</h2>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h1 style="background-color:pink;padding:14px;text-align:center;">Prescription</h1><br>
+    <label> Click the button to view an prescriptions</label><br>
+  
+ 
+  <select name="prname" class="form-control" >
+            
+            <option  value="{{user.first_name}} {{user.last_name}}">{{user.first_name}} {{user.last_name}}</option>
+           
+            </select>
+            
+ 
+    <input type="submit" value="view prescription" class="in">
+    
+</form><br><br>
+<table class="table table-hover">
+    <tr>
+        <th>Patient Name</th>
+        
+        <th>medicine</th>
+        <th>quantity</th>
+        <th>days </th>
+        <th>time </th>
+       
+    </tr>
+    {% for i in abc %}
+    <tr>
+        <td>{{i.p_name}}</td>
+        
+        <td>{{i.medicine}}</td>
+       
+        <td>{{i.quantity}}</td>
+        <td>{{i.days}}</td>
+        <td>{{i.time}}</td>
+       
+
+    </tr>
+    {% endfor %}
+   
+</table>
+<br>
+
+{% endblock %}

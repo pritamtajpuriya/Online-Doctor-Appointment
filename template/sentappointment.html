@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block section %}
+{% if msz %}
+<h2>{{msg}}</h2>
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h1 style="background-color:pink;padding:14px;text-align:center;">APPOINTMENT VIEW</h1><br>
+    <label> Click the button to view an appointment</label><br>
+   <!-- <input type="text" name="pname" value="{{user.first_name}} {{user.last_name}}" placeholder="Enter  patient name" ><br><br>-->
+ 
+  <select name="pname" class="form-control" >
+            
+            <option  value="{{user.first_name}} {{user.last_name}}">{{user.first_name}} {{user.last_name}}</option>
+           
+            </select>
+            
+ 
+    <input type="submit" value="view appointment" class="in">
+    
+</form><br><br>
+<table class="table table-hover">
+    <tr>
+        <th>Patient Name</th>
+        
+        <th>Patient phonenumber</th>
+        <th>Email</th>
+        <th>Patient Problem</th>
+        <th>Appointment Time </th>
+        <th>Appointment Date </th>
+        <th>Action </th>
+
+    </tr>
+    {% for i in obj %}
+    <tr>
+        <td>{{i.full_name}}</td>
+        
+        <td>{{i.phone_number}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.message}}</td>
+        <td>{{i.appointment_time}}</td>
+        <td>{{i.appointment_date}}</td>
+        <td><a href="{% url 'deletepost' i.id %}" onclick='return confirm("do you want to Delete")'  class="btn btn-danger">Delete</a></td>
+
+    </tr>
+    {% endfor %}
+   
+</table>
+<br>
+ <div style="background-color:yellow;padding:14px;text-align:center;">
+        <a href="{% url 'dsendemail' %}" class="dash">SEND EMAIL TO PATIENT</a>
+         </div>
+{% endblock %}

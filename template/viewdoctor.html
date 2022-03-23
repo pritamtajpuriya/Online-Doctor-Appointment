@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block section %}
+<h1 style="text-align:center; line-height: 80px; font-weight: bold; background: -webkit-linear-gradient(left, #0072ff, #8811c5);color: #fff; height: 80px;">Registered Doctor in clinic<h1>
+
+<form action="{% url 'search'%}" method="post">
+    {% csrf_token %}
+    <div style="text-align:left;">
+    <label>Search Doctor by their specialization.</label><br>
+    <select name="searched">
+    <option value="cardiologist">cardiology</option>
+    <option value="Eye">Eye care</option>
+    <option value="ENT">ENT specialist</option>
+   
+    <option value="Dentist">Dentistry</option>
+    <option value="Astrologist">Astrology</option>
+    <option value="physical therapist">physical therapy</option>
+    <option value="skin">Skincare</option>
+    <option value="Normal">General practitioner</option>
+    <option value="color and rectal serguons">colon and rectal surgeons</option>
+    <option value="Hematologist">Hematologists</option>
+</select><br>
+    <!--<input type="text" name="searched" placeholder="Enter  Doctor  name" ><br><br>-->
+    <input type="submit" value="search" class="in">
+    </div>
+</form>
+
+{% if searched %}
+<h1>you searched for {{ searched}}</h1><br>
+
+<table class="table table-hover">
+<tr>
+<th scope="col">Profile picture</th>
+<th scope="col">first name</th>
+<th scope="col">last name</th>
+<th scope="col">Contact number</th>
+<th scope="col">Age</th>
+<th scope="col">Gender</th>
+<th scope="col">specialization</th>
+<th scope="col">Action</th>
+</tr>
+
+{% for i in anil %}
+<tr>
+<td>
+ <img src="/media/{{i.profile}}" alt="no image" style="height: 100px; width: 200px;">
+</td> 
+<td scope="col">{{i.first_name}}</td> 
+
+<td scope="col">{{i.last_name}}</td>
+<td scope="col">{{i.contact_number}}</td>  
+<td scope="col">{{i.age}}</td> 
+<td scope="col">{{i.gender}}</td> 
+<td scope="col">{{i.occupation}}</td> 
+<td scope="col"><a href="{% url 'appointment' %}"  class="btn btn-primary">Appointment?</a></td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+
+{% endif %}
+<br>
+
+<table class="table table-hover">
+<tr>
+<th>Profile picture</th>
+<th> First name</th>
+<th>last name</th>
+<th>Contact number</th>
+<th>Age</th>
+<th>Gender</th>
+<th>Specialization</th>
+<th>Action</th>
+
+</tr>
+
+{% for i in all %}
+<tr>
+<td>
+ <img src="/media/{{i.profile}}" alt="no image" style="height: 100px; width: 200px;">
+</td>
+<td> {{i.first_name}}</td>
+<td> {{i.last_name}}</td>
+<td> {{i.contact_number}}</td>
+<td> {{i.age}}</td>
+<td> {{i.gender}}</td>
+
+<td> {{i.occupation}}</td>
+ <td><a href="{% url 'appointment' %}" onclick='return confirm("do you want to sent appointment ")'  class="btn btn-primary">Appointment?</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
+
+ 

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block section %}
+{% if msg %}
+<h2>{{msg}}</h2>
+{% endif %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+{{form.as_table}}
+</table>
+<input type="submit" value="Add Patient">
+</form>
+{% endblock %}
