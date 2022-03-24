@@ -3,14 +3,20 @@
 {% if msg %}
 <h2>{{msg}}</h2>
 {% endif %}
-<form action="" method="post" class="form">
-    {% csrf_token %}
-    <label>Current Password</label><br>
-    <input type="password" name="currentpass" required><br>
-    <label>Change Password</label><br>
-    <input type="password" name="changepass" required><br>
-    <label>Confirm Password</label><br>
-    <input type="password" name="confirmpass" required><br><br>
-    <input type="submit" value="Change Password" class="inti">
-</form>
+<div div class="center" style="padding:20px">
+
+
+    <form action="" method="post" class="form">
+        <h1 class="center">Change Password</h1>
+        {% csrf_token %}
+        <label>Current Password</label><br>
+        <input type="password" name="currentpass" required><br>
+        <label>Change Password</label><br>
+        <input type="password" name="changepass" required><br>
+        <label>Confirm Password</label><br>
+        <input type="password" name="confirmpass" required><br><br>
+        <input type="submit" value="Change Password" class="inti">
+    </form>
+</div>
+
 {% endblock %}

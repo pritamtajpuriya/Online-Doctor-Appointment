@@ -4,32 +4,36 @@
 <h2>{{msz}}</h2>
 {% endif %}
 <br>
-<form action="" method="post" enctype="multipart/form-data" >
-    {% csrf_token %}
-    <label>Patient Name</label><br>
-    <input type="text" name="patient_name"><br>
-    <label>Symptoms</label><br>
-    <input type="text" name="symptoms"><br>
-    <label>Complains</label><br>
-    <input type="text" name="complains" ><br>
-    <label>BP</label><br>
-    <input type="text" name="bp"><br>
-    <label>Temperature</label><br>
-    <input type="text" name="temperature"><br>
-    <label>Weight</label><br>
-    <input type="text" name="weight" ><br>
-    <label>fever</label><br>
-    <input type="text" name="fever" ><br>
-    <label>Pain Condition</label><br>
-    <input type="text" name="pain_condition"><br>
-    <label>Physical Appearence</label><br>
-    <input type="text" name="physical_appearence"><br>
-    <label>Deformation</label><br>
-    <input type="text" name="deformation" ><br>
-    <label>Appetite</label><br>
-    <input type="text" name="appetite"><br>
-    <label>Sleep Conditions</label><br>
-    <input type="text" name="sleep_conditions" ><br><br>
-    <input type="submit" value="Submit" class="inti">
-</form><br>
-    {% endblock %}
+<div class="center" style="padding:20px">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Screening Patient</h1>
+        <label>Patient Name</label><br>
+        <input type="text" name="patient_name"><br>
+        <label>Symptoms</label><br>
+        <input type="text" name="symptoms"><br>
+        <label>Complains</label><br>
+        <input type="text" name="complains"><br>
+        <label>BP</label><br>
+        <input type="text" name="bp"><br>
+        <label>Temperature</label><br>
+        <input type="text" name="temperature"><br>
+        <label>Weight</label><br>
+        <input type="text" name="weight"><br>
+        <label>fever</label><br>
+        <input type="text" name="fever"><br>
+        <label>Pain Condition</label><br>
+        <input type="text" name="pain_condition"><br>
+        <label>Physical Appearence</label><br>
+        <input type="text" name="physical_appearence"><br>
+        <label>Deformation</label><br>
+        <input type="text" name="deformation"><br>
+        <label>Appetite</label><br>
+        <input type="text" name="appetite"><br>
+        <label>Sleep Conditions</label><br>
+        <input type="text" name="sleep_conditions"><br><br>
+        <input type="submit" value="Submit" class="inti">
+    </form><br>
+</div>
+
+{% endblock %}

@@ -623,6 +623,7 @@ def appointmentsent(request):
 
 def adminviewappointment(request):
     user_check=Appointment.objects.all()
+
     d={'user_check':user_check}
     return render(request,'adminviewappointment.html',d) 
 
