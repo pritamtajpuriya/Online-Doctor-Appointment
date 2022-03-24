@@ -4,22 +4,28 @@
 <h2>{{msz}}</h2>
 {% endif %}
 <br>
-<form action="" method="post" enctype="multipart/form-data" >
-    {% csrf_token %}
-    <label>Patient Name</label><br>
-    <input type="text" name="patientname"><br>
-    <label>medicine</label><br>
-    <input type="text" name="medicine"><br>
-    <label>quantity</label><br>
-    <input type="number" name="quantity" ><br>
-    <label>Days</label><br>
-    <input type="text" name="days"><br>
-    <label>Time</label><br>
-    <input type="text" name="time"><br>
-    
-    <input type="submit" value="Submit" class="inti">
-</form><br>
+<div div class="center" style="padding:20px">
+    <form action="" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        <h1>Prescription Entry</h1>
+        <label>Patient Name</label><br>
+        <input type="text" name="patientname"><br>
+        <label>medicine</label><br>
+        <input type="text" name="medicine"><br>
+        <label>quantity</label><br>
+        <input type="number" name="quantity"><br>
+        <label>Days</label><br>
+        <input type="text" name="days"><br>
+        <label>Time</label><br>
+        <input type="text" name="time"><br>
+        <br>
+
+        <input type="submit" value="Submit" class="inti">
+    </form><br>
+
+</div>
 
 
 
-    {% endblock %}
+{% endblock %}
