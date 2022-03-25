@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <style>
-.af ul {
+  .af ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: black;
   }
-  
+
   .af li {
     float: left;
   }
-  
-  .af li a, .dropbtn {
+
+  .af li a,
+  .dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
   }
-  
-  .af li a:hover, .dropdown:hover .dropbtn {
+
+  .af li a:hover,
+  .dropdown:hover .dropbtn {
     background-color: red;
   }
-  
+
   .af li.dropdown {
     display: inline-block;
   }
-  
+
   .af.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
-  
+
   .af.dropdown-content a {
     color: white;
     padding: 12px 16px;
@@ -55,82 +59,94 @@
     display: block;
     text-align: left;
   }
-  
-  .af.dropdown-content a:hover {background-color: #f1f1f1;}
-  
+
+  .af.dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+
   .af.dropdown:hover .dropdown-content {
     display: block;
   }
 </style>
 
 <body>
-<header>
-<div class="af">
-  <ul>
+  <header>
+    <div class="af">
+      <ul>
 
-   {% if user.is_authenticated %}
-   <li>
-    <a href="{% url 'home' %}">HOME</a>
-</li>
-<li>
-    <a href="">ABOUTUS</a>
-</li>
-<li>
-    <a href="{% url 'contactus' %}">CONTACTUS</a>
-</li>
-<li>   
-    <a href="{% url 'service' %}">SERVICE</a>
-</li>
-<li >
-    <a href="{% url 'dashboard' %}">DASHBOARD</a>
-</li>
-{% else %}
-<li>
-    <a href="{% url 'home' %}">HOME</a>
-</li>
-<li>
-    <a href="{% url 'aboutus' %}">ABOUTUS</a>
-</li>
-<li>
-    <a href="{% url 'contactus' %}">CONTACTUS</a>
-</li>
-<li>   
-    <a href="{% url 'service' %}">SERVICE</a>
-</li>
+        {% if user.is_authenticated %}
+        <li>
+          <a href="{% url 'home' %}">HOME</a>
+        </li>
+        <li>
+          <a href="">ABOUTUS</a>
+        </li>
+        <li>
+          <a href="{% url 'contactus' %}">CONTACTUS</a>
+        </li>
+        <li>
+          <a href="{% url 'service' %}">SERVICE</a>
+        </li>
+        <li>
+          <a href="{% url 'dashboard' %}">DASHBOARD</a>
+        </li>
+        {% else %}
+        <li>
+          <a href="{% url 'home' %}">HOME</a>
+        </li>
+        <li>
+          <a href="{% url 'aboutus' %}">ABOUTUS</a>
+        </li>
+        <li>
+          <a href="{% url 'contactus' %}">CONTACTUS</a>
+        </li>
+        <li>
+          <a href="{% url 'service' %}">SERVICE</a>
+        </li>
 
-<li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn">Signup</a>
-        
-<div class="dropdown-content">
-  <a href="{% url 'asignup' %}">Adminsignup</a>
-  <a href="{% url 'psignup' %}">PatientSignup</a>
-  <a href="{% url 'dsignup' %}">DoctorSignup</a>
- 
-</div>
-      
-</li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Signup</a>
 
-<li >
-    <a href="{% url 'signin' %}">SIGNIN</a>
-</li>
-{% if user.is_authenticated %}
-<li >
-    <a href="{% url 'dashboard' %}">DASHBOARD</a>
-</li>
+          <div class="dropdown-content">
+            <a href="{% url 'asignup' %}">Adminsignup</a>
+            <a href="{% url 'psignup' %}">PatientSignup</a>
+            <a href="{% url 'dsignup' %}">DoctorSignup</a>
 
-{% endif %}
-{% endif %}
-  
-    </ul></div>
-    </header>
-<section>
+          </div>
+
+        </li>
+
+        <li>
+          <a href="{% url 'signin' %}">SIGNIN</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li>
+          <a href="{% url 'dashboard' %}">DASHBOARD</a>
+        </li>
+
+        {% endif %}
+        {% endif %}
+
+      </ul>
+    </div>
+  </header>
+  <section>
     {% block section %}
     {% endblock %}
-</section><footer>
+  </section>
+  <footer>
 
-{% include 'footer.html' %}
-</footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    {% include 'footer.html' %}
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
