@@ -2,132 +2,131 @@
 {% block section %}
 
 {% if msg %}
-<h2>{{msg}}</h2>
+<h2 style="display: flex; justify-content: center; padding: 10px;">{{msg}}</h2>
 {% endif %}
 
 
 <style type="text/css">
-    body {
-      color: #aa082e;
-      background-color: #b6bde7;
-      font-family: 'Roboto', sans-serif;
-    }
+  body {
+    color: #aa082e;
+    background-color: #b6bde7;
+    font-family: 'Roboto', sans-serif;
+  }
 
-    a:link {
-      text-decoration: none;
-    }
+  a:link {
+    text-decoration: none;
+  }
 
-    .note {
-      text-align: center;
-      height: 80px;
-      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
-      color: #fff;
-      font-weight: bold;
-      line-height: 80px;
-    }
+  .note {
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+  }
 
-    .form-content {
-      padding: 5%;
-      border: 1px solid #ced4da;
-      margin-bottom: 2%;
-    }
+  .form-content {
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+  }
 
-    .form-control {
-      border-radius: 1.5rem;
-    }
+  .form-control {
+    border-radius: 1.5rem;
+  }
 
-    .btnSubmit {
-      border: none;
-      border-radius: 1.5rem;
-      padding: 1%;
-      width: 30%;
-      cursor: pointer;
-      background: #0062cc;
-      color: #fff;
-    }
-   
-  </style>
+  .btnSubmit {
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1%;
+    width: 30%;
+    cursor: pointer;
+    background: #0062cc;
+    color: #fff;
+  }
+</style>
 
 <form action="" method="post" enctype="multipart/form-data" class="form">
-    {% csrf_token %}
-   
-     <div class="container register-form">
-      <div class="form">
-       <div class="note">
-          <p>Patient Signup Form</p>
-        </div>
+  {% csrf_token %}
+
+  <div class="container register-form " style="padding-top: 40px;">
+
+    <div class="note">
+      <p>Patient Signup Form</p>
+    </div>
 
     <div class="form-content">
-    <div class="row">
-    <div class="col-md-5">
-    <div class="form-group">
-<label for="first">Firstname</label><br>
-<input type="text" class="form-control" name="fname" id="first" placeholder="Firstname" required><br>
- </div>
- <div class="form-group">
-<label for="last">Lastname</label><br>
-<input type="text" class="form-control" name="lname" id="last" placeholder="Lastname" required><br>
- </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="first">Firstname</label><br>
+            <input type="text" class="form-control" name="fname" id="first" placeholder="Firstname" required><br>
+          </div>
+          <div class="form-group">
+            <label for="last">Lastname</label><br>
+            <input type="text" class="form-control" name="lname" id="last" placeholder="Lastname" required><br>
+          </div>
 
- <div class="form-group">
-<label for="uname">Username</label><br>
-<input type="text" class="form-control" name="uname" id="uname" placeholder="Username" required><br>
- </div>
+          <div class="form-group">
+            <label for="uname">Username</label><br>
+            <input type="text" class="form-control" name="uname" id="uname" placeholder="Username" required><br>
+          </div>
 
-<div class="form-group">
-<label for="passw">Password</label><br>
-<input type="password"class="form-control" name="passw" id="passw" placeholder="Password" required><br>
- </div>
+          <div class="form-group">
+            <label for="passw">Password</label><br>
+            <input type="password" class="form-control" name="passw" id="passw" placeholder="Password" required><br>
+          </div>
 
-<div class="form-group">
-<label for="email">Email</label><br>
-<input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required><br>
- </div>
+          <div class="form-group">
+            <label for="email">Email</label><br>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required><br>
+          </div>
 
- <div class="form-group">
-<label for="contact">ContactNumber</label><br>
-<input type="number" class="form-control" name="contact" id="contact" placeholder="Contact Number" required><br>
- </div>
- </div>
-<div class="col-md-5">
-<div class="form-group">
-<label for="age">Age</label><br>
-<input type="number" class="form-control" name="age" id="age" placeholder="Age" required><br>
- </div>
+          <div class="form-group">
+            <label for="contact">ContactNumber</label><br>
+            <input type="number" class="form-control" name="contact" id="contact" placeholder="Contact Number"
+              required><br>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="age">Age</label><br>
+            <input type="number" class="form-control" name="age" id="age" placeholder="Age" required><br>
+          </div>
 
-<div class="form-group">
-<label> Gender</label><br>
-<select name="gender">
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-    <option value="other">Other</option>
-</select><br>
- </div>
+          <div class="form-group">
+            <label> Gender</label><br>
+            <select name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select><br>
+          </div>
 
-<div class="form-group">
-<label>User type</label><br>
-<select name="utype">
-<option value="p">Patient</option>
-    
-    
+          <div class="form-group">
+            <label>User type</label><br>
+            <select name="utype">
+              <option value="p">Patient</option>
 
-</select><br>
- </div>
 
-<div class="form-group">
-<label>Occupation</label><br>
-<textarea name="occupation" id="" cols="30" rows="10" placeholder="Enter occupation " required>
+
+            </select><br>
+          </div>
+
+          <div class="form-group">
+            <label>Occupation</label><br>
+            <textarea name="occupation" id="" cols="30" rows="10" placeholder="Enter occupation " required>
 </textarea><br><br>
- </div>
- <div class="form-group"
-<label >Upload profile</label><br>           
-<input type="file" name="image" ><br>
- </div>
-</div>
-<button type="submit" class="btnSubmit">Register</button>
-</div>
-</div>
-</div>
+          </div>
+          <div class="form-group" <label>Upload profile</label><br>
+            <input type="file" name="image"><br>
+          </div>
+        </div>
+        <button type="submit" class="btnSubmit">Register</button>
+      </div>
+    </div>
+  </div>
 </form>
 
 
