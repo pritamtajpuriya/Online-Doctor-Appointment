@@ -7,12 +7,13 @@
     <form action="" method="post" class="form">
         {% csrf_token %}
         <label for="uname">To</label><br>
-        <input type="text" name="to" id="uname" placeholder="To"><br>
+        <input type="text" name="to" id="email" placeholder="To"><br>
+        <span id="emailError" style="color:red; font-size:14px"></span><br>
         <label>Subject</label><br>
-        <input type="text" name="subject" id="password" placeholder="Subject"><br><br>
+        <input type="text" name="subject" id="password" placeholder="Subject" required><br><br>
         <label>Message</label><br>
-        <textarea name="message" id="" cols="30" rows="10" placeholder="Message"></textarea><br><br>
-        <input type="submit" value="send email" class="in">
+        <textarea name="message" id="" cols="30" rows="10" placeholder="Message"required></textarea><br><br>
+        <input type="submit" value="send email" onclick="return validateEmail()" class="in">
 
     </form>
 </div>
