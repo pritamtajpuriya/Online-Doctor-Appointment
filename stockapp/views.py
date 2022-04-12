@@ -1,5 +1,7 @@
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
+
+from stockapp.algorithm import Algorithm
 from .models import Appointment, Category, Admin_Register, Patient_Register, Doctor_Register, Prescription
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -612,6 +614,7 @@ def adminviewappointment(request):
     user_check = Appointment.objects.all()
 
     d = {'user_check': user_check}
+
     return render(request, 'adminviewappointment.html', d)
 
 
@@ -674,9 +677,17 @@ def viewdoctor(request):
 
 
 def adminviewdoctor(request):
-    user_check = Doctor_Register.objects.all()
 
-    return render(request, 'adminviewDoctors.html', {'all': user_check})
+    doctor = []
+
+    user_check = Doctor_Register.objects.all()
+    for user in user_check:
+        doctor.append(user.id)
+    Algorithm.bubbleSort(doctor)
+
+    doctorList = Doctor_Register.objects.filter(id__in=doctor)
+
+    return render(request, 'adminviewDoctors.html', {'all': doctorList})
 
 
 def adminviewpatient(request):

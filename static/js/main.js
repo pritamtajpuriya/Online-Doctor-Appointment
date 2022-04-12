@@ -20,12 +20,18 @@ function validateForm() {
     var password= document.getElementById('passw').value;
     var passwordError= document.getElementById('passwordError');
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!inputText.match(mailformat)) {
+    
+    if (inputText=="")  {
+        error.innerHTML = "Email is required!";
+        document.form1.email.focus();
+        return false;
+    }
+    else if (!inputText.match(mailformat)) {
         error.innerHTML = "You have entered an invalid email address!";
         document.form1.email.focus();
         return false;
     }
-    if (contact.length < 10|| contact.length > 10) {
+   else if (contact.length < 10|| contact.length > 10) {
         contactError.innerHTML="number should be only 10 digit";
         return false;
 
